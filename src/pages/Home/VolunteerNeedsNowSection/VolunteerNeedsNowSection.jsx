@@ -24,7 +24,8 @@ const VolunteerNeedsNowSection = () => {
     return (
         <div>
             <div className="mb-12">
-                <h2 className="font_playfair text-center text-[#131313] font-bold text-4xl mb-4">All Tourists Spot</h2>
+                <h2 className="font_playfair text-center text-[#131313] font-bold text-4xl mb-4">Volunteer Needs Now Section</h2>
+                <p className="font-poppins font-normal text-[#878787] text-center">Volunteering allows you to connect to your community and make it a better <br /> place. Even helping out with the smallest tasks can make a real difference to the lives of people, animals, and organizations in need.</p>
             </div>
             <div className="px-32 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {volunteerNeeds.map(volunteer => (
