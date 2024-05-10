@@ -11,6 +11,7 @@ const VolunteerNeedsNowSection = () => {
             try {
                 const response = await axios.get('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post');
                 setVolunteerNeeds(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching volunteer needs:', error);
             }
@@ -18,19 +19,18 @@ const VolunteerNeedsNowSection = () => {
         fetchVolunteerNeeds();
     }, []);
 
-    console.log(volunteerNeeds)
+    console.log(volunteerNeeds);
 
     return (
         <div>
-            <h2>Volunteer Needs Now</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                {volunteerNeeds.map(need => (
+            <div className="mb-12">
+                <h2 className="font_playfair text-center text-[#131313] font-bold text-4xl mb-4">All Tourists Spot</h2>
+            </div>
+            <div className="px-32 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {volunteerNeeds.map(volunteer => (
                     <VolunteerNeedsCard
-                        key={need._id}
-                        thumbnail={need.thumbnail}
-                        title={need.title}
-                        category={need.category}
-                        deadline={need.deadline}
+                        key={volunteer._id}
+                        volunteer={volunteer}
                     />
                 ))}
             </div>

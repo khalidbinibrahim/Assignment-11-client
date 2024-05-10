@@ -10,6 +10,7 @@ import AddVolunteerPost from "../pages/AddVolunteerPost/AddVolunteerPost"
 import ManageMyPost from "../pages/ManageMyPost/ManageMyPost"
 import MyVolunteerRequestedPage from "../pages/MyVolunteerRequestedPage/MyVolunteerRequestedPage"
 import PrivateRoute from "./PrivateRoute";
+import VolunteerNeedCardDetails from "../pages/Home/VolunteerNeedsNowSection/VolunteerNeedsCard/VolunteerNeedsCardDetails";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
             {
                 path: '/my_volunteer_requested_post',
                 element: <PrivateRoute><MyVolunteerRequestedPage /></PrivateRoute>
+            },
+
+            {
+                path: '/volunteer/:postId',
+                element: <PrivateRoute><VolunteerNeedCardDetails /></PrivateRoute>
             }
         ]
     }    

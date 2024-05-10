@@ -11,7 +11,7 @@ const Header = () => {
             <div className="bg-[url('https://plus.unsplash.com/premium_photo-1681140560806-928e8b9a9a20?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGxhbnRpbmclMjB0cmVlc3xlbnwwfHwwfHx8MA%3D%3D')] bg-no-repeat bg-center bg-cover px-32 py-12 mb-12">
                 <div className="flex justify-between items-center">
                     <div>
-                        <Fade direction="down" triggerOnce={true}><h1 className="font-workSans mb-5 text-6xl font-bold text-white">Together We Can <br /> <span className="text-[#606c38]">Create Positive Change</span> <br /> In The World.</h1></Fade>
+                        <Fade direction="down" triggerOnce={true}><h1 className="font-workSans mb-5 text-6xl font-bold text-white">Together We Can <br /> <span className="text-[#283618]">Create Positive Change</span> <br /> In The World.</h1></Fade>
                         <p className="font-montserrat text-base-300 font-medium mb-6">A volunteer job is a non-paid position where you assist an organization by <br /> providing volunteer labor for a variety of tasks. Your responsibilities depend entirely <br /> on the type of organization for which you volunteer. There are many different types of volunteer positions.</p>
                         <Fade direction="up" triggerOnce={true}><button to="/add_tourists_spot" className="btn font-montserrat bg-[#dda15e] text-black font-bold px-7 text-center border-none">Our Help</button></Fade>
                     </div>
