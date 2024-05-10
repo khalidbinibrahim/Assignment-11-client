@@ -33,9 +33,9 @@ const Navigation = () => {
         <NavLink to="/need_volunteer_page" className="mr-3 font-bold text-black hover:bg-base-300 hover:text-[#606c38] focus:border-b-2 focus:text-[#606c38] focus:font-semibold rounded-lg py-2 px-3">Need Volunteer Page</NavLink>
         <li>
             <details>
-                <summary><NavLink to="/my_profile" className="mr-3 font-bold text-black hover:bg-base-300 hover:text-[#606c38] focus:border-b-2 focus:text-[#606c38] focus:font-semibold rounded-lg py-2 px-3">My Profile</NavLink></summary>
+                <summary>My Profile</summary>
                 <ul>
-                    <NavLink to="/add_volunteer_page" className="mr-3 font-bold text-black hover:bg-base-300 hover:text-[#606c38] focus:border-b-2 focus:text-[#606c38] focus:font-semibold rounded-lg py-2 px-3">Add Volunteer Post</NavLink>
+                    <NavLink to="/add_volunteer_post" className="mr-3 font-bold text-black hover:bg-base-300 hover:text-[#606c38] focus:border-b-2 focus:text-[#606c38] focus:font-semibold rounded-lg py-2 px-3">Add Volunteer Post</NavLink>
                     <NavLink to="/manage_my_post" className="mr-3 font-bold text-black hover:bg-base-300 hover:text-[#606c38] focus:border-b-2 focus:text-[#606c38] focus:font-semibold rounded-lg py-2 px-3">Manage My Post</NavLink>
                     <NavLink to="/my_volunteer_requested_post" className="mr-3 font-bold text-black hover:bg-base-300 hover:text-[#606c38] focus:border-b-2 focus:text-[#606c38] focus:font-semibold rounded-lg py-2 px-3">My Volunteer Requested Post</NavLink>
                 </ul>

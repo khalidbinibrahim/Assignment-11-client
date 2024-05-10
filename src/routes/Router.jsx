@@ -6,7 +6,7 @@ import Login from "../pages/Login/Login";
 import CreateAccount from "../pages/CreateAccount/CreateAccount";
 import NeedVolunteerPage from "../pages/NeedVolunteerPage/NeedVolunteerPage"
 import MyProfile from "../pages/MyProfile/MyProfile"
-import AddVolunteerPage from "../pages/AddVolunteerPage/AddVolunteerPage"
+import AddVolunteerPost from "../pages/AddVolunteerPost/AddVolunteerPost"
 import ManageMyPost from "../pages/ManageMyPost/ManageMyPost"
 import MyVolunteerRequestedPage from "../pages/MyVolunteerRequestedPage/MyVolunteerRequestedPage"
 import PrivateRoute from "./PrivateRoute";
@@ -43,8 +43,8 @@ const router = createBrowserRouter([
             },
 
             {
-                path: '/add_volunteer_page',
-                element: <PrivateRoute><AddVolunteerPage /></PrivateRoute>
+                path: '/add_volunteer_post',
+                element: <PrivateRoute><AddVolunteerPost /></PrivateRoute>
             },
 
             {

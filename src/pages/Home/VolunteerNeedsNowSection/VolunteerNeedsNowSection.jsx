@@ -9,7 +9,7 @@ const VolunteerNeedsNowSection = () => {
     useEffect(() => {
         const fetchVolunteerNeeds = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/volunteer_needs');
+                const response = await axios.get('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post');
                 setVolunteerNeeds(response.data);
             } catch (error) {
                 console.error('Error fetching volunteer needs:', error);
