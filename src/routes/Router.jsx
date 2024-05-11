@@ -11,6 +11,7 @@ import ManageMyPost from "../pages/ManageMyPost/ManageMyPost"
 import MyVolunteerRequestedPage from "../pages/MyVolunteerRequestedPage/MyVolunteerRequestedPage"
 import PrivateRoute from "./PrivateRoute";
 import VolunteerNeedCardDetails from "../pages/Home/VolunteerNeedsNowSection/VolunteerNeedsCard/VolunteerNeedsCardDetails";
+import UpdateVolunteerPost from "../pages/ManageMyPost/UpdateVolunteerPost/UpdateVolunteerPost"
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,12 @@ const router = createBrowserRouter([
             {
                 path: '/volunteer/:postId',
                 element: <PrivateRoute><VolunteerNeedCardDetails /></PrivateRoute>
+            },
+
+            {
+                path: '/update_volunteer_post/:postId',
+                element: <PrivateRoute><UpdateVolunteerPost /></PrivateRoute>,
+                loader: () => fetch('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post')
             }
         ]
     }    
