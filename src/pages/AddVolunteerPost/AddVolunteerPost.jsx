@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { TextField, Button, Select, MenuItem, FormControl, InputLabel, Grid, Typography } from '@mui/material';
+import { TextField, Select, MenuItem, FormControl, InputLabel, Grid, Typography } from '@mui/material';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
@@ -12,6 +12,8 @@ const AddVolunteerPost = () => {
 
     const onSubmit = async (data) => {
         console.log(data);
+        data.user_id = user.uid;
+
         try {
             const response = await axios.post('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post', data);
             if (response.status === 201) {
@@ -33,8 +35,11 @@ const AddVolunteerPost = () => {
             <Helmet>
                 <title>VolunteerHub | Add Volunteer Post</title>
             </Helmet>
+            <div className='mb-8'>
+                <h2 className="font_playfair text-center text-[#131313] font-bold text-4xl">Add Volunteer Post</h2>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Grid container spacing={2}>
+                <div className='grid grid-cols-2 gap-6 mx-72 my-8'>
                     <Grid item xs={12}>
                         <TextField
                             {...register('thumbnail', { required: 'Thumbnail is required' })}
@@ -135,11 +140,9 @@ const AddVolunteerPost = () => {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <Button type="submit" variant="contained" color="primary">
-                            Add Post
-                        </Button>
+                        <button className="bg-[#dda15e] w-1/2 h-full hover:bg-[#bc6c25] text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">Add Post</button>
                     </Grid>
-                </Grid>
+                </div>
             </form>
         </div>
     );

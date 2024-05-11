@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, CardContent, TextField, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { TextField } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import VolunteerNeedsCard from '../Home/VolunteerNeedsNowSection/VolunteerNeedsCard/VolunteerNeedsCard';
 
@@ -35,17 +34,19 @@ const NeedVolunteerPage = () => {
             <Helmet>
                 <title>VolunteerHub | Need Volunteer Page</title>
             </Helmet>
-            <div className="container mx-auto px-4 py-8">
-                <h1 className="text-3xl font-semibold text-gray-800 mb-4">Volunteer Needs</h1>
-                <TextField
-                    label="Search by Post Title"
-                    variant="outlined"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    fullWidth
-                    className="mb-4"
-                />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="px-4 py-8">
+                <h1 className="font_playfair text-center text-[#131313] font-bold text-4xl mb-6">Volunteer Needs</h1>
+                <div className='w-1/3 mx-auto my-4'>
+                    <TextField
+                        label="Search by Post Title"
+                        variant="outlined"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        fullWidth
+                        className="mb-4"
+                    />
+                </div>
+                <div className="px-32 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {filteredVolunteerNeeds.map(volunteer => (
                         <VolunteerNeedsCard key={volunteer._id} volunteer={volunteer} />
                     ))}
