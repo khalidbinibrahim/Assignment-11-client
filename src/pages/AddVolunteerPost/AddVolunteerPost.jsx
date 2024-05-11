@@ -3,9 +3,12 @@ import { TextField, Button, Select, MenuItem, FormControl, InputLabel, Grid, Typ
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const AddVolunteerPost = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { user } = useContext(AuthContext);
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -110,7 +113,7 @@ const AddVolunteerPost = () => {
                             {...register('organizerName', { required: 'Organizer Name is required' })}
                             label="Organizer Name"
                             fullWidth
-                            defaultValue="John Doe" // Assuming default organizer name
+                            defaultValue={ user.displayName ? user.displayName : "John Doe" }
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -123,7 +126,7 @@ const AddVolunteerPost = () => {
                             {...register('organizerEmail', { required: 'Organizer Email is required' })}
                             label="Organizer Email"
                             fullWidth
-                            defaultValue="john@example.com" // Assuming default organizer email
+                            defaultValue={ user.email ? user.email : "john@example.com" }
                             InputProps={{
                                 readOnly: true,
                             }}

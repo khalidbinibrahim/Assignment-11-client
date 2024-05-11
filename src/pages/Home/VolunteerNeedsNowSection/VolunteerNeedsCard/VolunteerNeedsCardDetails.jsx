@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import VolunteerModal from './VolunteerModal';
 import { LuTimer, LuPencil } from "react-icons/lu";
 import { LuUsers2 } from "react-icons/lu";
 import { IoLocationOutline } from "react-icons/io5";
@@ -8,12 +9,13 @@ import { useParams } from 'react-router-dom';
 
 const VolunteerNeedCardDetails = () => {
   const [allVolunteer, setAllVolunteer] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const { postId } = useParams();
 
   useEffect(() => {
     const fetchPostDetails = async () => {
       try {
-        const response = await axios.get('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post');
+        const response = await axios.get(`https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post`);
         setAllVolunteer(response.data);
         console.log(response.data);
       } catch (error) {
@@ -29,6 +31,10 @@ const VolunteerNeedCardDetails = () => {
   useEffect(() => {
     console.log(volunteerCardDetails);
   }, [volunteerCardDetails]);
+
+  const handleBeVolunteerClick = () => {
+    setShowModal(true);
+  };
 
   if (!volunteerCardDetails) {
     return <div>Loading...</div>;
@@ -62,13 +68,17 @@ const VolunteerNeedCardDetails = () => {
                 <span className="flex items-center gap-2 text-gray-600 font-semibold mr-2"><LuTimer className='text-2xl' /> Deadline:</span>
                 <span className="text-gray-800 font-montserrat text-xl font-medium">{new Date(volunteerCardDetails.deadline).toLocaleDateString()}</span>
               </div>
-              <button className="bg-[#dda15e] hover:bg-[#bc6c25] text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+              <button
+                onClick={handleBeVolunteerClick}
+                className="bg-[#dda15e] hover:bg-[#bc6c25] text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+              >
                 Be a Volunteer
               </button>
             </div>
           </div>
         </div>
       </div>
+      {showModal && <VolunteerModal volunteerPost={volunteerCardDetails} onClose={() => setShowModal(false)} />}
     </div>
   );
 };
