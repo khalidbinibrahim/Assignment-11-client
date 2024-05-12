@@ -12,8 +12,9 @@ const VolunteerModal = ({ volunteerPost, onClose }) => {
         try {
             await axios.post('https://assignment-11-server-woad-one.vercel.app/api/request_volunteer', {
                 postId: _id,
-                volunteerName: user.email,
-                volunteerEmail: user.displayName,
+                volunteerName: user.displayName,
+                volunteerEmail: user.email,
+                user_id: user.uid,
                 suggestion
             });
 

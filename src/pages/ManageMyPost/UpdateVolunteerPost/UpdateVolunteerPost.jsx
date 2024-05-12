@@ -152,7 +152,7 @@ const UpdateVolunteerPost = () => {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <button className="bg-[#dda15e] w-1/2 h-full hover:bg-[#bc6c25] text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">Add Post</button>
+                        <button className="bg-[#dda15e] w-1/2 h-full hover:bg-[#bc6c25] text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">Update Post</button>
                     </Grid>
                 </div>
             </form>

@@ -15,7 +15,7 @@ const VolunteerNeedsCard = ({ volunteer }) => {
                 <p className="flex gap-2 items-center text-gray-700 text-base font-medium mb-3 font-poppins"><LuTimer className='text-xl' /> Deadline: {deadline}</p>
                 <div className="flex items-center mb-6">
                     <span className="flex items-center gap-2 text-gray-600 font-semibold mr-2"><IoLocationOutline className='text-2xl' /> Location:</span>
-                    <span className="text-gray-800 font-montserrat text-xl font-medium">{volunteer.location}</span>
+                    <span className="text-gray-800 font-montserrat text-lg font-medium">{volunteer.location}</span>
                 </div>
                 <Link to={`/volunteer/${_id}`} className="bg-[#dda15e] hover:bg-[#bc6c25] text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">View Details</Link>
             </div>
