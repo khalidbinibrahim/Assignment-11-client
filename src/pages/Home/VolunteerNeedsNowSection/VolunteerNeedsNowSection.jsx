@@ -21,6 +21,8 @@ const VolunteerNeedsNowSection = () => {
 
     console.log(volunteerNeeds);
 
+    const limitedVolunteerNeeds = volunteerNeeds.slice(0, 6);
+
     return (
         <div className='mb-10'>
             <div className="mb-12">
@@ -28,7 +30,7 @@ const VolunteerNeedsNowSection = () => {
                 <p className="font-poppins font-normal text-[#878787] text-center">Volunteering allows you to connect to your community and make it a better <br /> place. Even helping out with the smallest tasks can make a real difference to the lives of people, animals, and organizations in need.</p>
             </div>
             <div className="px-32 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {volunteerNeeds.map(volunteer => (
+                {limitedVolunteerNeeds.map(volunteer => (
                     <VolunteerNeedsCard
                         key={volunteer._id}
                         volunteer={volunteer}
