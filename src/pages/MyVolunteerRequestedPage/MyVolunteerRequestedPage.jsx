@@ -38,28 +38,38 @@ const MyVolunteerRequestedPage = () => {
                 <title>VolunteerHub | My Volunteer Requested Page</title>
             </Helmet>
 
-            {volunteerRequests.length > 0 ? (
-                <table className="table-auto">
-                    <thead>
-                        <tr>
-                            <th>Information 1</th>
-                            <th>Cancel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {volunteerRequests.map(request => (
-                            <tr key={request._id}>
-                                <td>{request.suggestion}</td>
-                                <td>
-                                    <button onClick={() => handleCancelRequest(request._id)}>Cancel</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            ) : (
-                <p>No volunteer requests found.</p>
-            )}
+            <div className="container mx-auto w-9/12 my-14">
+                <div className="mx-8 my-10 px-14 py-8 border rounded-md border-gray-400 font-montserrat text-center">
+                    <h1 className="text-3xl font-bold my-4">My Volunteer Requests</h1>
+                    {volunteerRequests.length === 0 ? (
+                        <p>No volunteer requests found.</p>
+                    ) : (
+                        <table className="table-auto">
+                            <thead>
+                                <tr>
+                                    <th className="px-4 py-2">Suggestion</th>
+                                    <th className="px-4 py-2">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {volunteerRequests.map(volunteer => (
+                                    <tr key={volunteer._id}>
+                                        <td className="border px-4 py-2">{volunteer.suggestion}</td>
+                                        <td className="border px-4 py-2">
+                                            <button
+                                                onClick={() => handleCancelRequest(volunteer._id)}
+                                                className="btn text-red-500 hover:text-red-700 font-bold px-7 text-center rounded-md border-none"
+                                            >
+                                                Cancel
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
