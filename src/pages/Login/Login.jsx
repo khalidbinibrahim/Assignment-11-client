@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { IoMdEye } from "react-icons/io";
 import { PiEyeClosedBold } from "react-icons/pi";
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 
 const Login = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -21,7 +22,18 @@ const Login = () => {
         const { email, password } = data;
         loginUser(email, password)
             .then(res => {
-                console.log(res.user);
+                const loggedUser = res.user;
+                console.log(loggedUser);
+                const user = { email };
+
+                axios.post('https://assignment-11-server-woad-one.vercel.app/jwt', user)
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+
                 navigate(location?.state ? location.state : '/');
                 toast.success("Logged in user successfully");
             })
