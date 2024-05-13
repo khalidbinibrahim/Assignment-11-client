@@ -15,7 +15,7 @@ const VolunteerNeedCardDetails = () => {
   useEffect(() => {
     const fetchPostDetails = async () => {
       try {
-        const response = await axios.get(`https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post`);
+        const response = await axios.get(`https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post`, { withCredentials: true });
         setAllVolunteer(response.data);
         console.log(response.data);
       } catch (error) {

@@ -16,7 +16,7 @@ const VolunteerModal = ({ volunteerPost, onClose }) => {
                 volunteerEmail: user.email,
                 user_id: user.uid,
                 suggestion
-            });
+            }, { withCredentials: true });
 
             onClose();
         } catch (error) {

@@ -10,7 +10,7 @@ const MyVolunteerRequestedPage = () => {
     useEffect(() => {
         const fetchVolunteerRequests = async () => {
             try {
-                const response = await axios.get(`https://assignment-11-server-woad-one.vercel.app/api/user_request_volunteer/${user.uid}`);
+                const response = await axios.get(`https://assignment-11-server-woad-one.vercel.app/api/user_request_volunteer/${user.uid}`, { withCredentials: true });
                 setVolunteerRequests(response.data);
                 console.log(response.data);
             } catch (error) {
@@ -24,7 +24,7 @@ const MyVolunteerRequestedPage = () => {
         const confirmCancel = window.confirm('Are you sure you want to cancel this volunteer request?');
         if (confirmCancel) {
             try {
-                await axios.delete(`https://assignment-11-server-woad-one.vercel.app/api/request_volunteer/${requestId}`);
+                await axios.delete(`https://assignment-11-server-woad-one.vercel.app/api/request_volunteer/${requestId}`, { withCredentials: true });
                 setVolunteerRequests(volunteerRequests.filter(request => request._id !== requestId));
             } catch (error) {
                 console.error('Error canceling volunteer request:', error);

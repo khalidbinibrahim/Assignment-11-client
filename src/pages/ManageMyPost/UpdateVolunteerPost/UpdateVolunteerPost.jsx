@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import { TextField, Select, MenuItem, FormControl, InputLabel, Grid, Typography } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const UpdateVolunteerPost = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -20,17 +21,7 @@ const UpdateVolunteerPost = () => {
     const onSubmit = async data => {
         console.log(data);
         try {
-            const response = await fetch(`https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post/${postId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to update Volunteer');
-            }
+            await axios.put(`https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post/${postId}`, data, { withCredentials: true })
 
             window.location.href = '/manage_my_post';
             toast.success('Your Volunteer Updated Successfully');
@@ -42,7 +33,7 @@ const UpdateVolunteerPost = () => {
     return (
         <div>
             <div className='mb-8'>
-                <h2 className="font_playfair text-center text-[#131313] font-bold text-4xl">Add Volunteer Post</h2>
+                <h2 className="font_playfair text-center text-[#131313] font-bold text-4xl">Update Volunteer Post</h2>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='grid grid-cols-2 gap-6 mx-72 my-8'>

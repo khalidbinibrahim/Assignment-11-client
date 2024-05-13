@@ -26,15 +26,17 @@ const Login = () => {
                 console.log(loggedUser);
                 const user = { email };
 
-                axios.post('https://assignment-11-server-woad-one.vercel.app/jwt', user)
-                .then(res => {
-                    console.log(res.data);
-                })
-                .catch(err => {
-                    console.error(err);
-                });
+                axios.post('https://assignment-11-server-woad-one.vercel.app/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.message) {
+                            navigate(location?.state ? location.state : '/');
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
 
-                navigate(location?.state ? location.state : '/');
                 toast.success("Logged in user successfully");
             })
             .catch(error => {
