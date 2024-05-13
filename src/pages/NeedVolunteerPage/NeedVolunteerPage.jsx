@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { TextField } from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import VolunteerNeedsCard from '../Home/VolunteerNeedsNowSection/VolunteerNeedsCard/VolunteerNeedsCard';
+import VolunteerNeedsTable from '../Home/VolunteerNeedsNowSection/VolunteerNeedsTable/VolunteerNeedsTable';
+import { CiGrid41, CiViewTable } from "react-icons/ci";
 
 const NeedVolunteerPage = () => {
     const [volunteerNeeds, setVolunteerNeeds] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [layoutMode, setLayoutMode] = useState('grid');
 
     useEffect(() => {
         const fetchVolunteerNeeds = async () => {
@@ -23,6 +26,10 @@ const NeedVolunteerPage = () => {
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
+    };
+
+    const toggleLayoutMode = () => {
+        setLayoutMode(layoutMode === 'grid' ? 'table' : 'grid');
     };
 
     const filteredVolunteerNeeds = volunteerNeeds.filter(volunteer =>
@@ -46,11 +53,21 @@ const NeedVolunteerPage = () => {
                         className="mb-4"
                     />
                 </div>
-                <div className="px-32 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    {filteredVolunteerNeeds.map(volunteer => (
-                        <VolunteerNeedsCard key={volunteer._id} volunteer={volunteer} />
-                    ))}
+                <div className="flex justify-end mr-24">
+                    <Button variant="contained" onClick={toggleLayoutMode}>
+                        {layoutMode === 'grid' ? <CiViewTable className='text-3xl' /> : <CiGrid41 className='text-3xl' />}
+                    </Button>
                 </div>
+                {/* Render either grid or table layout based on the layout mode */}
+                {layoutMode === 'grid' ? (
+                    <div className="px-32 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        {filteredVolunteerNeeds.map(volunteer => (
+                            <VolunteerNeedsCard key={volunteer._id} volunteer={volunteer} />
+                        ))}
+                    </div>
+                ) : (
+                    <VolunteerNeedsTable volunteerNeeds={filteredVolunteerNeeds} />
+                )}
             </div>
         </div>
     );
