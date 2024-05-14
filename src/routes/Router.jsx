@@ -66,8 +66,7 @@ const router = createBrowserRouter([
 
             {
                 path: '/update_volunteer_post/:postId',
-                element: <PrivateRoute><UpdateVolunteerPost /></PrivateRoute>,
-                loader: () => fetch('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post')
+                element: <PrivateRoute><UpdateVolunteerPost /></PrivateRoute>
             }
         ]
     }    

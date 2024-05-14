@@ -15,7 +15,7 @@ const AddVolunteerPost = () => {
         data.user_id = user.uid;
 
         try {
-            const response = await axios.post('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post', data);
+            const response = await axios.post('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post', data, { withCredentials: true });
             if (response.status === 201) {
                 toast.success('Volunteer post added successfully');
                 console.log(response.data);

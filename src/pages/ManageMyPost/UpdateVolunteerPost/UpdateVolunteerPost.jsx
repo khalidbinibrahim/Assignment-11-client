@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { TextField, Select, MenuItem, FormControl, InputLabel, Grid, Typography } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
@@ -8,7 +8,15 @@ import axios from 'axios';
 const UpdateVolunteerPost = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { postId } = useParams();
-    const allVolunteerPost = useLoaderData();
+    const [ allVolunteerPost, setAllVolunteerPost ] = useState();
+    
+        const response = axios.get('https://assignment-11-server-woad-one.vercel.app/api/add_volunteer_post', { withCredentials: true });
+        if (response.status === 201) {
+            setAllVolunteerPost(response.data);
+            console.log(response.data);
+        } else {
+            toast.error('Failed to load volunteer post');
+        }
 
     const volunteer = allVolunteerPost.find(spot => spot._id === postId);
 

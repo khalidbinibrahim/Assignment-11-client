@@ -10,6 +10,8 @@ import { FaGithub } from 'react-icons/fa';
 import { IoMdEye } from "react-icons/io";
 import { PiEyeClosedBold } from "react-icons/pi";
 import { Helmet } from 'react-helmet-async';
+import Lottie from 'lottie-react';
+import animation from '../../../public/animation.json';
 
 const CreateAccount = () => {
     const { register, handleSubmit, getValues, reset } = useForm();
@@ -113,41 +115,46 @@ const CreateAccount = () => {
             </Helmet>
             <div className='mb-10'>
                 <ToastContainer />
-                <div className='mx-8 lg:mx-96 my-10 px-14 py-8 border rounded-md border-gray-400 font-montserrat'>
-                    <h1 className='mb-6 font-bold text-black text-2xl'>Create an Account</h1>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className='mb-4'>
-                            <TextField id="standard-basic" label="First Name" variant="standard" className='w-full' type="text" {...register("firstName", { required: true })} />
-                        </div>
+                <div className='flex items-center'>
+                    <div className='mx-8 lg:mx-auto my-10 px-14 py-8 border rounded-md border-gray-400 font-montserrat w-4/12'>
+                        <h1 className='mb-6 font-bold text-black text-2xl'>Create an Account</h1>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className='mb-4'>
+                                <TextField id="standard-basic" label="First Name" variant="standard" className='w-full' type="text" {...register("firstName", { required: true })} />
+                            </div>
 
-                        <div className='mb-4'>
-                            <TextField id="standard-basic" label="Last Name" variant="standard" className='w-full' type="text" {...register("lastName", { required: true })} />
-                        </div>
+                            <div className='mb-4'>
+                                <TextField id="standard-basic" label="Last Name" variant="standard" className='w-full' type="text" {...register("lastName", { required: true })} />
+                            </div>
 
-                        <div className='mb-4'>
-                            <TextField id="standard-basic" label="Photo Url" variant="standard" className='w-full' type="url" {...register("PhotoUrl", { required: true })} />
-                        </div>
+                            <div className='mb-4'>
+                                <TextField id="standard-basic" label="Photo Url" variant="standard" className='w-full' type="url" {...register("PhotoUrl", { required: true })} />
+                            </div>
 
-                        <div className='mb-4'>
-                            <TextField id="standard-basic" label="Email" variant="standard" className='w-full' type="email" {...register("email", { required: true })} />
-                        </div>
+                            <div className='mb-4'>
+                                <TextField id="standard-basic" label="Email" variant="standard" className='w-full' type="email" {...register("email", { required: true })} />
+                            </div>
 
-                        <div className='mb-4 flex items-center'>
-                            <TextField id="standard-basic" label="Password" variant="standard" className='w-full' type={showPassword ? "text" : "password"} {...register("password", { required: true })} />
-                            <span onClick={togglePasswordVisibility} className='relative right-8 text-xl'>{showPassword ? <IoMdEye /> : <PiEyeClosedBold />}</span>
-                        </div>
+                            <div className='mb-4 flex items-center'>
+                                <TextField id="standard-basic" label="Password" variant="standard" className='w-full' type={showPassword ? "text" : "password"} {...register("password", { required: true })} />
+                                <span onClick={togglePasswordVisibility} className='relative right-8 text-xl'>{showPassword ? <IoMdEye /> : <PiEyeClosedBold />}</span>
+                            </div>
 
-                        <div className='mb-4 flex items-center'>
-                            <TextField id="standard-basic" label="Confirm Password" variant="standard" className='w-full' type={showConfirmPassword ? "text" : "password"} {...register("confirmPassword", { required: true })} />
-                            <span onClick={toggleConfirmPasswordVisibility} className='relative right-8 text-xl'>{showConfirmPassword ? <IoMdEye /> : <PiEyeClosedBold />}</span>
-                        </div>
+                            <div className='mb-4 flex items-center'>
+                                <TextField id="standard-basic" label="Confirm Password" variant="standard" className='w-full' type={showConfirmPassword ? "text" : "password"} {...register("confirmPassword", { required: true })} />
+                                <span onClick={toggleConfirmPasswordVisibility} className='relative right-8 text-xl'>{showConfirmPassword ? <IoMdEye /> : <PiEyeClosedBold />}</span>
+                            </div>
 
 
-                        <div className='my-4'>
-                            <button type="submit" className="btn w-full bg-[#dda15e] font-montserrat text-black font-bold px-7 text-center rounded-md border-none" onClick={handleCreateAccount}>Create an account</button>
-                        </div>
-                    </form>
-                    <p className='text-black font-bold text-center'>Already have an account? <NavLink to="/login" className="text-[#606c38] hover:border-b hover:border-[#606c38] font-semibold">Login</NavLink></p>
+                            <div className='my-4'>
+                                <button type="submit" className="btn w-full bg-[#dda15e] font-montserrat text-black font-bold px-7 text-center rounded-md border-none" onClick={handleCreateAccount}>Create an account</button>
+                            </div>
+                        </form>
+                        <p className='text-black font-bold text-center'>Already have an account? <NavLink to="/login" className="text-[#606c38] hover:border-b hover:border-[#606c38] font-semibold">Login</NavLink></p>
+                    </div>
+                    <div className='w-1/2'>
+                        <Lottie animationData={animation} />
+                    </div>
                 </div>
 
                 <div className='mb-6 font-montserrat'>
