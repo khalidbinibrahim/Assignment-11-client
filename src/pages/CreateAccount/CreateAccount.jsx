@@ -12,6 +12,7 @@ import { PiEyeClosedBold } from "react-icons/pi";
 import { Helmet } from 'react-helmet-async';
 import Lottie from 'lottie-react';
 import animation from '../../../public/animation.json';
+import axios from 'axios';
 
 const CreateAccount = () => {
     const { register, handleSubmit, getValues, reset } = useForm();
@@ -66,11 +67,23 @@ const CreateAccount = () => {
 
         createUser(email, password)
             .then(res => {
-                console.log(res.user);
                 res.user.photoURL = PhotoUrl;
                 res.user.displayName = fullName;
+                const loggedUser = res.user;
+                console.log(loggedUser);
+                const user = { email };
+
+                axios.post('https://assignment-11-server-woad-one.vercel.app/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.message) {
+                            navigate(location?.state ? location.state : '/');
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
                 toast.success("Account created successfully");
-                navigate(location?.state ? location.state : '/');
                 reset();
             })
             .catch(error => {
